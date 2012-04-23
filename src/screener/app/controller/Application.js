@@ -15,6 +15,8 @@ Ext.define("Screener.controller.Application", {
 			navBar: '#navBar',
 			patientView: 'patientView',
 			doctorView: 'doctorView',
+			pharmacyView: 'pharmacyView',
+			labView: 'labView',
 			newPatient: 'newPatient',
 			sortPanel: 'sortPanel',
 			patientList: '#patientList',
@@ -27,6 +29,8 @@ Ext.define("Screener.controller.Application", {
 			addPatientButton: '#addPatientButton',
 			showPatientsButton: '#showPatientsButton',
 			showDoctorsButton: '#showDoctorsButton',
+			showPharmacyButton: '#showPharmacyButton',
+			showLaboratoryButton: '#showLaboratoryButton',
 			savePatientButton: '#savePatientButton', 
 			assignButton: '#assignButton',
 			sortButton: '#sortButton',
@@ -50,6 +54,12 @@ Ext.define("Screener.controller.Application", {
 			},
 			showDoctorsButton: {
 				tap: 'showDoctors'
+			},
+			showPharmacyButton: {
+				tap: 'showPharmacy'
+			},
+			showLaboratoryButton: {
+				tap:'showLaboratory'
 			},
 			assignButton: {
 				tap: 'assignPatient'
@@ -151,6 +161,23 @@ Ext.define("Screener.controller.Application", {
 		this.getExpandDoctorList().deselectAll();		
 		this.getView().push(this.doctorView);
 	},
+	
+	showPharmacy: function() {
+		if(!this.pharmacyView){ 
+			this.pharmacyView = Ext.create('Screener.view.PharmacyView');
+		}
+		//this.getExpandDoctorList().deselectAll();		
+		this.getView().push(this.pharmacyView);
+	},
+	
+	showLaboratory: function() {
+		if(!this.labView){ 
+			this.labView = Ext.create('Screener.view.LabView');
+		}
+			
+		this.getView().push(this.labView);
+	},
+	
 
 	//keeping track of which patient/doctor is currently selected
 	//if both are selected, enable the ASSIGN button
